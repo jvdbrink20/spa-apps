@@ -71,12 +71,12 @@ namespace WebApplicationBasic
 			{
 				app.UseDeveloperExceptionPage();
 
-				app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-				{
-					HotModuleReplacement = true,
-					ConfigFile = "webpack.config.js",
-					HotModuleReplacementClientOptions = new Dictionary<string, string> { { "reload", "true" } }
-				});
+				//app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+				//{
+				//	HotModuleReplacement = true,
+				//	ConfigFile = "webpack.config.js",
+				//	HotModuleReplacementClientOptions = new Dictionary<string, string> { { "reload", "true" } }
+				//});
 			}
 			else
 			{
@@ -101,18 +101,18 @@ namespace WebApplicationBasic
 					pattern: "{controller}/{action=Index}/{id?}");
 			});
 
-			//app.UseSpa(spa =>
-			//{
-			//	// To learn more about options for serving an Angular SPA from ASP.NET Core,
-			//	// see https://go.microsoft.com/fwlink/?linkid=864501
+			app.UseSpa(spa =>
+			{
+				// To learn more about options for serving an Angular SPA from ASP.NET Core,
+				// see https://go.microsoft.com/fwlink/?linkid=864501
 
-			//	//spa.Options.SourcePath = "src";
+				//spa.Options.SourcePath = "src";
 
-			//	if (env.IsDevelopment())
-			//	{
-			//		spa.UseProxyToSpaDevelopmentServer("http://localhost:5000");
-			//	}
-			//});
+				if (env.IsDevelopment())
+				{
+					spa.UseProxyToSpaDevelopmentServer("http://localhost:5000");
+				}
+			});
 		}
 	}
 }
